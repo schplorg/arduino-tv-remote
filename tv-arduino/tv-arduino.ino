@@ -21,20 +21,125 @@ unsigned int S_9[68]={4600,4350,700,1500,700,1550,650,1550,700,400,700,450,650,4
 unsigned int S_0[68]={4650,4300,700,1550,700,1500,700,1550,700,400,700,400,700,400,700,450,650,450,650,1550,700,1550,650,1550,700,400,700,400,700,400,700,450,700,400,700,1550,650,400,700,450,700,400,650,1550,700,400,700,450,700,400,700,400,700,1500,700,1550,700,1500,700,400,700,1550,650,1550,700,1500,700};
 unsigned int S_tv[68]={4600,4350,650,1550,700,1500,700,1550,700,400,700,400,700,400,700,450,700,400,700,1500,700,1500,700,1550,700,400,700,400,700,450,650,450,700,400,700,1500,700,1550,700,400,700,400,700,400,700,400,700,1550,700,400,700,400,700,400,700,1550,700,1500,700,1550,650,1550,700,400,700,1500,700};
 // new codes
-//unsigned int my_pwr[38] = {9728, 17920, 37525, 3899, 4154, 4154, 4117, 4117, 4117, 4372, 4372, 4409, 4154, 4664, 4372, 4372, 4372, 4117, 4117, 4372, 4409, 4372, 4372, 4117, 4372, 4372, 4372, 4409, 4372, 4409, 4409, 4409, 4409, 4410, 4154, 3840, 3333, 0};
 unsigned long my_pwr = 0xE0E040BF;
+unsigned long my_info = 0xE0E0F807;
+unsigned long my_tools = 0xE0E0D22D;
+unsigned long my_menu = 0xE0E058A7;
+unsigned long my_guide = 0xE0E0F20D;
+unsigned long my_mute = 0xE0E0F00F;
+unsigned long my_left = 0xE0E0A659;
+unsigned long my_right = 0xE0E046B9;
+unsigned long my_up = 0xE0E006F9;
+unsigned long my_down = 0xE0E08679;
+unsigned long my_enter = 0xE0E016E9;
+unsigned long my_return = 0xE0E01AE5;
+unsigned long my_1 = 0xE0E020DF;
+unsigned long my_2 = 0xE0E0A05F;
+unsigned long my_3 = 0xE0E0609F;
+unsigned long my_4 = 0xE0E010EF;
+unsigned long my_5 = 0xE0E0906F;
+unsigned long my_6 = 0xE0E050AF;
+unsigned long my_7 = 0xE0E030CF;
+unsigned long my_8 = 0xE0E0B04F;
+unsigned long my_9 = 0xE0E0708F;
+unsigned long my_0 = 0xE0E08877;
 
 void setup()
 {
   pinMode(13, OUTPUT);
+  Serial.begin(9600);
+  while(!Serial){}
+  Serial.println("START");
+  // delay(5000);
+  // digitalWrite(13, HIGH);
+  // irsend.sendSAMSUNG(my_info,32);
+  // delay(3000);
+  // irsend.sendSAMSUNG(my_tools,32);
+  // delay(3000);
+  // irsend.sendSAMSUNG(my_mute,32);
+  // delay(3000);
+  // irsend.sendSAMSUNG(my_pwr,32);
+  // digitalWrite(13, LOW);
 }
 
 void loop() {
-  digitalWrite(13, HIGH);
-  //irsend.sendRaw(S_pwr,68,38);
-  //irsend.sendRaw(my_pwr,38,38);
-  irsend.sendSAMSUNG(my_pwr,32);
+  if (Serial.available() > 0){
+    String msg = Serial.readStringUntil('\n');
+    Serial.println("XXX"+msg+"XXX");
+    if(msg == "pwr"){      
+      irsend.sendSAMSUNG(my_pwr,32);
+    }
+    if(msg == "info"){      
+      irsend.sendSAMSUNG(my_info,32);
+    }
+    if(msg == "tools"){      
+      irsend.sendSAMSUNG(my_tools,32);
+    }
+    if(msg == "mute"){      
+      irsend.sendSAMSUNG(my_mute,32);
+    }
+    if(msg == "menu"){      
+      irsend.sendSAMSUNG(my_menu,32);
+    }
+    if(msg == "guide"){      
+      irsend.sendSAMSUNG(my_guide,32);
+    }
+
+    if(msg == "0"){      
+      irsend.sendSAMSUNG(my_0,32);
+    }
+    if(msg == "1"){      
+      irsend.sendSAMSUNG(my_1,32);
+    }
+    if(msg == "2"){      
+      irsend.sendSAMSUNG(my_2,32);
+    }
+    if(msg == "3"){      
+      irsend.sendSAMSUNG(my_3,32);
+    }
+    if(msg == "4"){      
+      irsend.sendSAMSUNG(my_4,32);
+    }
+    if(msg == "5"){      
+      irsend.sendSAMSUNG(my_5,32);
+    }
+    if(msg == "6"){      
+      irsend.sendSAMSUNG(my_6,32);
+    }
+    if(msg == "7"){      
+      irsend.sendSAMSUNG(my_7,32);
+    }
+    if(msg == "8"){      
+      irsend.sendSAMSUNG(my_8,32);
+    }
+    if(msg == "9"){      
+      irsend.sendSAMSUNG(my_9,32);
+    }
+    
+    if(msg == "ent"){      
+      irsend.sendSAMSUNG(my_enter,32);
+    }
+    if(msg == "up"){      
+      irsend.sendSAMSUNG(my_up,32);
+    }
+    if(msg == "down"){      
+      irsend.sendSAMSUNG(my_down,32);
+    }
+    if(msg == "left"){      
+      irsend.sendSAMSUNG(my_left,32);
+    }
+    if(msg == "right"){      
+      irsend.sendSAMSUNG(my_right,32);
+    }
+    if(msg == "return"){      
+      irsend.sendSAMSUNG(my_return,32);
+    }
+  }
   delay(40);
-  digitalWrite(13, LOW);
-  delay(5000); //5 second delay between each signal burst
+
+  // digitalWrite(13, HIGH);
+  // irsend.sendSAMSUNG(my_pwr,32);
+  // delay(40);
+  // digitalWrite(13, LOW);
+  // delay(5000);
 }
